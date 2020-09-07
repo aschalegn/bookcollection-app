@@ -1,0 +1,36 @@
+.collection_header {
+    display: flex;
+    border: 1px solid;
+    align-items: center;
+    margin: 15px 0;
+
+    .btn {
+        height: 30px;
+    }
+    .editable {
+        
+    }
+}
+
+.books_container {
+    display: flex;
+    overflow: hidden;
+    margin-left: 5%;
+
+    .book_container {
+        flex-basis: 25%;
+        min-width: 250px;
+        height: 350px;
+    }
+
+    .cover_img {
+        margin-bottom: 5px;
+        transition: all .5s;
+
+        &:hover {
+            transform: scale(1.07);
+        }
+    }
+
+    
+}

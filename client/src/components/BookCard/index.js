@@ -1,28 +1,29 @@
 import React, { useState, useContext, Fragment } from 'react'
 import * as style from './BookCard.module.scss'
 import { getBookCoverByOLID, getBookInfo } from '../../BooksApi';
-import { CollectionContext } from '../../context/Collections/Collction';
+import { CollectionContext } from '../../context/Collections';
 
 export default function BookCard(props) {
-    const { collectionDispach, collections } = useContext(CollectionContext);
-    const [addToCallction, setAddToCallction] = useState(false);
+    const { collections, collectionDispach } = useContext(CollectionContext);
+    const [addBtn, setAddBtn] = useState(false);
     const [newCollection, setNewCollection] = useState(false)
     const [collectionName, setCollectionName] = useState('');
 
-    const addToCollection = (e) => {
+    //add to collection
+    const addToCollection = () => {
         collectionDispach({
             type: "ADD_TO_COLLECTION",
             payload: {
                 name: collectionName,
                 title: props.book.title,
                 author: props.book.author_name ? props.book.author_name : "No author found",
-                cover: '',
+                olid: props.book.edition_key
             }
         });
     }
 
-    const createCollection = (e) => {
-        e.preventDefault();
+    //create new collection
+    const createCollection = () => {
         collectionDispach({
             type: "CREATE_COLLECTION",
             payload: { name: collectionName, books: [] },
@@ -31,29 +32,32 @@ export default function BookCard(props) {
 
     return (
         <div>
-            <h2>{props.book.title} by</h2>
+            <h2>{props.book.title}</h2>
             {props.book.author_name ? props.book.author_name.map((author, i) =>
                 <h2 key={i}><small> {author}</small></h2>
             ) : ''}
             <img src={getBookCoverByOLID(props.book.edition_key[1] || props.book.edition_key[0])} />
-            <button className={style.add_btn} onClick={() => setAddToCallction(!addToCallction)}><span>&#43;</span></button>
-            {addToCallction ?
+            <button className={style.add_btn} onClick={() => setAddBtn(!addBtn)}><span>&#43;</span></button>
+
+            {/* user desided to add to collection */}
+            {addBtn ?
                 <Fragment>
                     {collections.collection.length > 0 ?
                         <Fragment>
                             <select name="collection" id="" onChange={(e) => { setCollectionName(e.target.value) }}>
                                 <option value="">Select Collection</option>
-                                {collections.collection.map((collection, i) =>
-                                    <option value={collection.name} key={i}>{collection.name}</option>
+                                {collections.collection.map((col, i) =>
+                                    <option value={col.name} key={i}>{col.name}</option>
                                 )}
                             </select>
-                            <button onClick={addToCollection}>Create</button>
+                            <button onClick={addToCollection}>Add</button>
                         </Fragment>
                         : <p>No collections</p>
                     }
                     <p onClick={() => {
                         setNewCollection(!newCollection);
-                    }}>Add new Collection</p>
+                    }}>Add New <span>&#10010;</span></p>
+                    {/* user desided to create new collection */}
                     {newCollection ?
                         <Fragment>
                             <input type="text" name="addNewCollection" id=""
