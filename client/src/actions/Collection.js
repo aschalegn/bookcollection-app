@@ -1,0 +1,7 @@
+const createCollection = () => {
+
+}
+
+const addToCllection = () => {
+
+}

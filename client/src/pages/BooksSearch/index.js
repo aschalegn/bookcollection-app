@@ -15,7 +15,6 @@ export const BooksSearch = () => {
       .then(result => {
         setSearchResult(result.docs);
         setTotalPages(result.docs.length)
-        // console.log(result.docs);
       })
   }
 
