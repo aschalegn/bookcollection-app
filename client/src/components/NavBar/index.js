@@ -16,9 +16,6 @@ export const NavBar = () => {
             Collections
           </Link>
         </li>
-        <li>
-          <Link className={style.link} to="/">Menu</Link>
-        </li>
       </ul>
     </nav>
   );

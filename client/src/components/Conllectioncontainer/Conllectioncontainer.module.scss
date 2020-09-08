@@ -1,22 +1,35 @@
+.carousel {
+    position: relative;
+    width: 100%;
+
+    .arrows {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+
+        >.prev,
+        >.next {
+            position: absolute;
+            list-style-type: none;
+            transform: translateY(-50%);
+
+        }
+
+        >.prev {
+            left: 10px;
+        }
+
+        >.next {
+            right: 10px;
+        }
+
+    }
+
+}
+
 .books_container {
+    width: 100%;
     display: flex;
     overflow: hidden;
-    margin-left: 5%;
-
-    .book_container {
-        flex-basis: 25%;
-        min-width: 250px;
-        height: 350px;
-    }
-
-    .cover_img {
-        margin-bottom: 5px;
-        transition: all .5s;
-
-        &:hover {
-            transform: scale(1.07);
-        }
-    }
-
-    
+    height: 350px;
 }

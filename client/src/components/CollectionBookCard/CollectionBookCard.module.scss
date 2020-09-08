@@ -1,0 +1,14 @@
+.bookCard {
+    min-width: 25%;
+    overflow: hidden;
+
+    .coverImg {
+        margin-bottom: 5px;
+        transition: all .5s;
+        object-fit: cover;
+
+        &:hover {
+            transform: scale(1.07);
+        }
+    }
+}

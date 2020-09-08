@@ -8,5 +8,14 @@
         height: 30px;
     }
 
-    .editable {}
+    .editable {
+        outline: 1px solid;
+    }
+
+    >button {
+        padding: 10px;
+        margin: 5px;
+        outline: none;
+        border: none;
+    }
 }

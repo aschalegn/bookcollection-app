@@ -14,7 +14,7 @@ export const BooksSearch = () => {
    // let firstPostIndex, lastPostIndex, currentResult = [];
    const getSearchResult = (e) => {
       e.preventDefault();
-      searchBooks(searchTerm, searchMethod)
+      searchBooks(searchMethod, searchTerm)
          .then(result => {
             setSearchResult(result.docs);
             setTotalPages(result.docs.length)
