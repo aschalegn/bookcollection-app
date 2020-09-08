@@ -1,5 +1,5 @@
-const getApiSearchUrl = (searchTerm) =>
-  `http://openlibrary.org/search.json?q=${searchTerm}`;
+const getApiSearchUrl = (method, searchTerm) =>
+  `http://openlibrary.org/search.json?${method}=${searchTerm}`;
 
 export const getBookCoverByOLID = (olid) =>
   `http://covers.openlibrary.org/b/olid/${olid}-M.jpg`;
@@ -7,10 +7,12 @@ export const getBookCoverByOLID = (olid) =>
 const getBookInfoBuOLID = (olid) =>
   `http://openlibrary.org/api/books?bibkeys=OLID:${olid}&jscmd=data`;
 
-export const searchBooks = (searchTerm = "") => {
-  return fetch(getApiSearchUrl(searchTerm)).then((r) => r.json());
+export const searchBooks = (method = "q", searchTerm = "") => {
+  console.log({ method, searchTerm });
+  return fetch(getApiSearchUrl(searchTerm, method)).then((r) => r.json());
 };
 
 export const getBookInfo = (olid = "") => {
+
   return fetch(getBookInfoBuOLID(olid)).then((r) => r.text());
 };

@@ -1,8 +1,20 @@
+.book_search {
+    width: 90%;
+    margin: auto;
+}
+
 .serchForm {
     .search {
         width: 20vw;
         height: 20px;
         margin-right: 10px;
-        
+
     }
+}
+
+.searchResult {
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    grid-column-gap: 2%;
+
 }

@@ -31,7 +31,7 @@ export default function BookCard(props) {
     }
 
     return (
-        <div>
+        <div className={style.book_card}>
             <h2>{props.book.title}</h2>
             {props.book.author_name ? props.book.author_name.map((author, i) =>
                 <h2 key={i}><small> {author}</small></h2>
