@@ -1,0 +1,9 @@
+.pagination_container {
+    display: flex;
+    justify-content: center;
+    background-color: teal;
+
+    .page {
+        list-style-type: none;
+    }
+}

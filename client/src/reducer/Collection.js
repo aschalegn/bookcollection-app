@@ -16,8 +16,8 @@ export const collectionReducer = (state, action) => {
             state = {
                 ...state, collection: state.collection.map(col => {
                     if (col.name === payload.prevName)
-                        return [...col, col.name = payload.newName]
-                    else return col
+                        return { ...col, name: payload.newName }
+                    else return col;
                 })
             };
             break
@@ -32,7 +32,7 @@ export const collectionReducer = (state, action) => {
                                 olid: payload.olid
                             }]
                         }
-                    else return col
+                    else return col;
                 })
             }
             break
@@ -45,12 +45,29 @@ export const collectionReducer = (state, action) => {
                 })
             }
             break
-       
+        case "MOVE_FROM_COLLECTION_TO_COLLECTION":
+            state = {
+                ...state, collection: state.collection.map(col => {
+                    if (col.name === payload.from) {
+                        return { ...col, books: col.books.filter(book => book.olid[0] !== payload.olid[0]) }
+                    } else if (col.name === payload.to) {
+                        return {
+                            ...col, books: [...col.books, {
+                                title: payload.title,
+                                author: payload.author,
+                                olid: payload.olid
+                            }]
+                        }
+                    }
+                    else return col
+                })
+            }
+            break
         default:
             break;
     }
 
     localStorage.collection = JSON.stringify(state.collection);
-    console.log(state);
+    // console.log(state);
     return state
 }

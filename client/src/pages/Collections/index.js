@@ -16,7 +16,6 @@ export const Collections = () => {
     });
   }
 
-
   return (
     <section>
       <h1>Books collections</h1>
