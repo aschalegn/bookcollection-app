@@ -1,0 +1,63 @@
+.confirmContainer::before {
+    position: fixed;
+    min-width: 100vw;
+    height: 100vh;
+    content: '';
+    background-color: black;
+    opacity: .4;
+    left: 0;
+    top: 0;
+    padding: 0;
+    z-index: -1;
+}
+
+.confirmContainer {
+    position: fixed;
+    width: 50vw;
+    color: black;
+    height: 40vh;
+    background-color: #fff;
+    border-radius: 7px;
+    top: 30%;
+    left: 25%;
+    z-index: 100;
+
+    >button {
+        color: white;
+        width: 100px;
+        height: 40px;
+        margin: 40px 80px;
+        outline: none;
+        border: none;
+        background-color: rgb(67, 67, 128);
+        transition: all .7s;
+        border-radius: 10px;
+        font-size: 20px;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    >button:first-of-type {
+        background-color: red;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .confirmContainer {
+        left: 5vh;
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .confirmContainer {
+        width: 96vw;
+        left: 2vw;
+        font-size: 14px;
+        >button {
+            margin: 40px 20px;
+        }
+    }
+}

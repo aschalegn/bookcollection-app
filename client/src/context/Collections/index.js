@@ -28,12 +28,10 @@ export default function CollctionProvider(props) {
 
   //*Remove Collection
   const deleteCollection = (collectionId) => {
-    if (window.confirm("You sure you want to delete the collection?")) {
-      dispatch({
-        type: "DELETE_COLLECTION",
-        payload: collectionId,
-      });
-    }
+    dispatch({
+      type: "DELETE_COLLECTION",
+      payload: collectionId,
+    });
   };
 
   const addToCollection = (
@@ -55,12 +53,10 @@ export default function CollctionProvider(props) {
 
   //*Remove from Collection
   const removeFromCollection = (collectionId, olid) => {
-    if (window.confirm("You sure you want to remove from collection?")) {
-      dispatch({
-        type: "REMOVE_FROM_COLLECTION",
-        payload: { id: collectionId, olid: olid },
-      });
-    }
+    dispatch({
+      type: "REMOVE_FROM_COLLECTION",
+      payload: { id: collectionId, olid: olid },
+    });
   };
 
   //* collection to collection

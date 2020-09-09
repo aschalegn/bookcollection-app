@@ -1,20 +1,81 @@
-.book_search {
+.beforeSearch {
     width: 90%;
-    margin: auto;
+    margin: 30vh auto;
+}
+
+//go up slowly after the search
+.bookSearch {
+    width: 90%;
+    margin: 30vh auto;
+    transition: .7s all;
+}
+
+.bookSearch {
+    margin: 0 auto;
 }
 
 .serchForm {
-    .search {
-        width: 20vw;
-        height: 20px;
-        margin-right: 10px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 
+    .formItem {
+        outline: none;
+        border: none;
+        height: 40px;
+        margin: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        background-color: #2c52a3;
+    }
+
+    input,
+    select {
+        font-size: 18px;
+        transition: all .5s;
+
+        &:hover {
+            background-color: #3f78f3;
+        }
+    }
+
+    >div>input:first-of-type {
+        background-color: #fff;
+        color: black;
+        width: 300px;
     }
 }
 
 .searchResult {
     display: grid;
     grid-template-columns: repeat(4, 23%);
-    grid-column-gap: 2%;
+    grid-column-gap: 1%;
+}
+
+@media only screen and (max-width:930px) {
+    .searchResult {
+        grid-template-columns: repeat(3, 30%);
+    }
+}
+
+@media only screen and (max-width:680px) {
+    .serchForm {
+        flex-direction: column;
+    }
+
+    .searchResult {
+        grid-template-columns: repeat(2, 48%);
+    }
+
+}
+
+@media only screen and (max-width:435px) {
+    .serchForm {}
+
+    .searchResult {
+        grid-template-columns: 98%;
+    }
 
 }

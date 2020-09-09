@@ -15,9 +15,7 @@ export const BooksSearch = () => {
 
   const getSearchResult = (e) => {
     e.preventDefault();
-    setSearchResult([]);
     setLoading(true);
-
     searchBooks(searchMethod, searchTerm).then((result) => {
       setSearchResult(result.docs);
       setTotalPages(result.docs.length);
@@ -34,42 +32,54 @@ export const BooksSearch = () => {
   };
 
   return (
-    <section className={style.book_search}>
+    <section
+      className={
+        searchResult.length > 0 ? style.bookSearch : style.beforeSearch
+      }
+    >
       <h1>Search Books</h1>
       <form className={style.serchForm} onSubmit={getSearchResult}>
-        <select
-          name="searchMethod"
-          onChange={(e) => setSearchMethod(e.target.value)}
-        >
-          <option value="q">All</option>
-          <option value="author">Author</option>
-          <option value="title">Book Title</option>
-        </select>
-        <input
-          type="text"
-          name="serach"
-          id="search"
-          className={style.search}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-        <input type="submit" value="Search" />
+        <div>
+          <select
+            name="searchMethod"
+            onChange={(e) => setSearchMethod(e.target.value)}
+            className={style.formItem}
+          >
+            <option value="q">All</option>
+            <option value="author">Author</option>
+            <option value="title">Book Title</option>
+          </select>
+          <input
+            type="text"
+            name="serach"
+            id="search"
+            className={style.formItem}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+        </div>
+        <input type="submit" value="Search" className={style.formItem} />
       </form>
+
       {loading ? (
-        "Loding..."
+        <p>Loding...</p>
       ) : (
-        <article className={style.searchResult}>
-          {currentResult.map((book, i) => (
-            <BookCard book={book} key={i} />
-          ))}
-        </article>
+        <>
+          <article className={style.searchResult}>
+            {currentResult.map((book, i) => (
+              <BookCard book={book} key={i} />
+            ))}
+          </article>
+
+          <Pagination
+            paginate={paginate}
+            perPage={perPage}
+            totalPages={totalPages}
+          />
+        </>
       )}
-      <Pagination
-        paginate={paginate}
-        perPage={perPage}
-        totalPages={totalPages}
-      />
+      {/* </div> */}
     </section>
   );
 };
