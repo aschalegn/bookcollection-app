@@ -16,20 +16,22 @@ export default function BookCard(props) {
   //add to collection
   return (
     <div className={style.book_card}>
-      <h2>{book.title}</h2>
-      {book.author_name
-        ? book.author_name.map((author, i) => (
-            <h2 key={i}>
-              <small> {author}</small>
-            </h2>
-          ))
-        : ""}
+      <h3>{book.title}</h3>
       <img
         src={getBookCoverByOLID(book.edition_key[1] || book.edition_key[0])}
       />
-      <button className={style.add_btn} onClick={() => setAddBtn(!addBtn)}>
-        <span>&#43;</span>
+      {book.author_name
+        ? book.author_name.map((author, i) => (
+            <h3 key={i}>
+              <small> {author}</small>
+            </h3>
+          ))
+        : ""}
+      <button onClick={() => setAddBtn(!addBtn)}>
+        <span>Add To Col</span>
       </button>
+      <br />
+      <br />
 
       {/* user desided to add to collection */}
       {addBtn ? (
@@ -50,7 +52,7 @@ export default function BookCard(props) {
                   </option>
                 ))}
               </select>
-              <button
+              <button className={style.addBtn}
                 onClick={() =>
                   addToCollection(
                     collectionId,
@@ -60,7 +62,8 @@ export default function BookCard(props) {
                   )
                 }
               >
-                Add
+                {/* Add button */}
+                <span>&#10004;</span> 
               </button>
             </>
           ) : (
@@ -71,7 +74,7 @@ export default function BookCard(props) {
               setNewCollection(!newCollection);
             }}
           >
-            Add New <span>&#10010;</span>
+            Create New Collection
           </p>
 
           {/* user decided to create new collection */}

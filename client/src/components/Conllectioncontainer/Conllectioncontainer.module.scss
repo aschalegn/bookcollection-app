@@ -1,3 +1,8 @@
+.collectionContainer {
+    margin-top: 50px;
+    ;
+}
+
 .carousel {
     position: relative;
     width: 100%;
@@ -9,27 +14,29 @@
 
         >.prev,
         >.next {
+            padding: 5px;
             position: absolute;
             list-style-type: none;
             transform: translateY(-50%);
-
+            font-size: 3rem;
+            cursor: pointer;
         }
 
         >.prev {
-            left: 10px;
+            left: -10px;
         }
 
         >.next {
-            right: 10px;
+            right: 20px;
         }
 
     }
-
 }
 
-.books_container {
-    width: 100%;
+.booksContainer {
+    width: 98%;
     display: flex;
     overflow: hidden;
-    height: 350px;
+    max-height: 350px;
+    margin: auto;
 }

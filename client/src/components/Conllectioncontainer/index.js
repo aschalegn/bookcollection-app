@@ -1,31 +1,42 @@
-import React, { useContext } from "react";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import * as style from "./Conllectioncontainer.module.scss";
-import { CollectionContext } from "../../context/Collections";
 import CollectionBookCard from "../CollectionBookCard";
 import CollectionHeader from "../CollectionHeader";
 
 export default function CollectionContainer({ collection }) {
-  const { deleteCollection } = useContext(CollectionContext);
+  const sliderRef = useRef();
 
-  const next = () => {};
-  const prev = () => {};
+  const prev = () => {
+    const slider = sliderRef.current;
+    slider.scrollLeft -= slider.offsetWidth;
+    if (slider.scrollLeft < 0) {
+      slider.scrollLeft = slider.scrollWidth;
+    }
+  };
+
+  const next = () => {
+    const slider = sliderRef.current;
+    slider.scrollLeft += slider.offsetWidth;
+    if (slider.scrollLeft > slider.scrollWidth - slider.offsetWidth) {
+      slider.scrollLeft = 0;
+    }
+  };
 
   return (
-    <>
-      <CollectionHeader
-        name={collection.name}
-        deleteCollection={() => deleteCollection(collection.id)}
-      />
+    <section className={style.collectionContainer}>
+      <CollectionHeader name={collection.name} collectionId={collection.id} />
       <div className={style.carousel}>
         <ul className={style.arrows}>
-          <li className={style.prev}>
-            <button onClick={prev}>&#10096;</button>
-          </li>
-          <li className={style.next}>
-            <button onClick={next}>&#10097;</button>
-          </li>
+          <span className={style.prev} onClick={prev}>
+            &#10096;
+          </span>
+
+          <span className={style.next} onClick={next}>
+            &#10097;
+          </span>
         </ul>
-        <article className={style.books_container}>
+        <article className={style.booksContainer} ref={sliderRef}>
           {collection.books.length ? (
             collection.books.map((book, i) => (
               <CollectionBookCard
@@ -35,10 +46,12 @@ export default function CollectionContainer({ collection }) {
               />
             ))
           ) : (
-            <p>No books in the collection</p>
+            <p>
+              No books in the collection <Link to="/search">Add now</Link>
+            </p>
           )}
         </article>
       </div>
-    </>
+    </section>
   );
 }

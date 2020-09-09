@@ -1,7 +1,7 @@
 .navigation {
-  background: rgb(47, 47, 63);
-  padding-top: 20px;
-  padding-bottom: 3px;
+  background: rgb(38, 39, 39);
+  padding: 15px 0;
+  font-weight: bold;
 }
 
 .linksContainer {
@@ -11,6 +11,8 @@
 
   >li {
     margin-right: 28px;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 3px 1px olive;
   }
 
   padding: 0;
@@ -23,6 +25,7 @@
 .link {
   text-decoration: none;
   transition: 100ms ease-in-out color;
+  font-size: 20px;
 
   &:active {
     color: white;

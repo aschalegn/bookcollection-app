@@ -9,33 +9,27 @@ export default function CollctionProvider(props) {
       ? JSON.parse(localStorage.collection)
       : [],
   };
-  const [collections, collectionDispach] = useReducer(
-    collectionReducer,
-    initialState
-  );
+  const [collections, dispatch] = useReducer(collectionReducer, initialState);
 
   //Create Collection
   const createCollection = (collectionName) => {
-    collectionDispach({
+    dispatch({
       type: "CREATE_COLLECTION",
       payload: { name: collectionName, books: [], id: uuidv4() },
     });
   };
 
-  //Remove from Collection
-  const removeFromCollection = (collectionId, olid) => {
-    if (window.confirm("You sure you want to remove from collection?")) {
-      collectionDispach({
-        type: "REMOVE_FROM_COLLECTION",
-        payload: { id: collectionId, olid: olid },
-      });
-    }
+  const renameCollection = (collectionId, newName) => {
+    dispatch({
+      type: "RENAME_COLLECTION",
+      payload: { id: collectionId, newName },
+    });
   };
 
-  //Remove Collection
+  //*Remove Collection
   const deleteCollection = (collectionId) => {
     if (window.confirm("You sure you want to delete the collection?")) {
-      collectionDispach({
+      dispatch({
         type: "DELETE_COLLECTION",
         payload: collectionId,
       });
@@ -48,21 +42,32 @@ export default function CollctionProvider(props) {
     author = "No author found",
     olid
   ) => {
-    collectionDispach({
+    dispatch({
       type: "ADD_TO_COLLECTION",
       payload: {
         id: collectionId,
-        title: title,
-        author: author,
-        olid: olid,
+        title,
+        author,
+        olid,
       },
     });
   };
 
-  const renameCollection = (collectionId, newName) => {
-    collectionDispach({
-      type: "RENAME_COLLECTION",
-      payload: { id: collectionId, newName: newName },
+  //*Remove from Collection
+  const removeFromCollection = (collectionId, olid) => {
+    if (window.confirm("You sure you want to remove from collection?")) {
+      dispatch({
+        type: "REMOVE_FROM_COLLECTION",
+        payload: { id: collectionId, olid: olid },
+      });
+    }
+  };
+
+  //* collection to collection
+  const moveFromCollectionToCollection = (from, to, olid) => {
+    dispatch({
+      type: "MOVE_FROM_COLLECTION_TO_COLLECTION",
+      payload: { from, to, olid },
     });
   };
 
@@ -70,7 +75,6 @@ export default function CollctionProvider(props) {
     <CollectionContext.Provider
       value={{
         collections,
-        collectionDispach,
         removeFromCollection,
         createCollection,
         deleteCollection,

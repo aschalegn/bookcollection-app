@@ -63,14 +63,14 @@ export const collectionReducer = (state, action) => {
       state = {
         ...state,
         collection: state.collection.map((col) => {
-          if (col.name === payload.from) {
+          if (col.id === payload.from) {
             return {
               ...col,
               books: col.books.filter(
                 (book) => book.olid[0] !== payload.olid[0]
               ),
             };
-          } else if (col.name === payload.to) {
+          } else if (col.id === payload.to) {
             return {
               ...col,
               books: [

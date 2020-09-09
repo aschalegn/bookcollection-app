@@ -3,8 +3,8 @@ import * as style from "./CollectionHeader.module.scss";
 import { CollectionContext } from "../../context/Collections";
 
 export default function CollectionHeader(props) {
-  const { name, deleteCollection } = props;
-  const { renameCollection } = useContext(CollectionContext);
+  const { name, collectionId } = props;
+  const { renameCollection, deleteCollection } = useContext(CollectionContext);
   const [renameBtn, setRenameBtn] = useState(false);
   const newName = useRef(name);
 
@@ -17,18 +17,36 @@ export default function CollectionHeader(props) {
       >
         {name}
       </h2>
-      <button
-        onClick={() => {
-          setRenameBtn(!renameBtn);
-          if (newName.current.innerText !== name) renameCollection();
-        }}
-      >
-        {!renameBtn ? "Rename" : "Save"}
-      </button>
 
-      <button className={style.deleteBtn} onClick={deleteCollection}>
+      {!renameBtn ? (
+        <button
+          onClick={() => {
+            setRenameBtn(!renameBtn);
+            if (newName.current.innerText !== name)
+              renameCollection(collectionId, newName.current.innerText);
+          }}
+        >
+          Rename
+        </button>
+      ) : (
+        <button
+          className={style.saveBtn}
+          onClick={() => {
+            setRenameBtn(!renameBtn);
+            if (newName.current.innerText !== name)
+              renameCollection(collectionId, newName.current.innerText);
+          }}
+        >
+          Save
+        </button>
+      )}
+
+      <button
+        title="Will delete the whole collection"
+        className={style.deleteBtn}
+        onClick={() => deleteCollection(collectionId)}
+      >
         Delete
-        <span>&#10006;</span>
       </button>
     </div>
   );

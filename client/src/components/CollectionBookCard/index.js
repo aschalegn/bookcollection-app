@@ -9,7 +9,7 @@ export default function CollectionBookCard(props) {
 
   return (
     <div className={style.bookCard}>
-      <button onClick={() => removeFromCollection(collectionId, book.olid)}>
+      <button className={style.deleteBtn} onClick={() => removeFromCollection(collectionId, book.olid)}>
         <span>&#10006;</span>
       </button>
       <h3>{book.title}</h3>

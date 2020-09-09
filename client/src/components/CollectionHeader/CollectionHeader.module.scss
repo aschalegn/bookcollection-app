@@ -1,8 +1,13 @@
 .collection_header {
     display: flex;
-    border: 1px solid;
+    border-bottom: 5px solid gray;
     align-items: center;
-    margin: 15px 0;
+    margin-bottom: 20px ;
+    width: 100%;
+
+    h2 {
+        text-transform: capitalize;
+    }
 
     .btn {
         height: 30px;
@@ -10,12 +15,29 @@
 
     .editable {
         outline: 1px solid;
+        padding: 5px;
+        background-color: rgb(241, 232, 232);
+        color: black;
     }
 
     >button {
         padding: 10px;
-        margin: 5px;
+        margin-left: 20px;
         outline: none;
         border: none;
+        background-color: #2b458f;
+        color: white;
+        font-weight: bolder;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    >.deleteBtn {
+        margin-right: 50px;
+        margin-left: auto;
+        background-color: rgb(241, 8, 8);
+    }
+
+    .saveBtn {
+        background-color: #1bb31b;
     }
 }

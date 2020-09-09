@@ -1,14 +1,41 @@
 .bookCard {
-    min-width: 25%;
-    overflow: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 23%;
+    margin: 0 1%;
+    position: relative;
 
     .coverImg {
-        margin-bottom: 5px;
         transition: all .5s;
-        object-fit: cover;
 
         &:hover {
             transform: scale(1.07);
         }
+    }
+
+    .deleteBtn {
+        position: absolute;
+        background-color: rgb(238, 32, 32);
+        border: none;
+        font-size: 16px;
+        right: 10px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .bookCard {
+        flex-basis: 32%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .bookCard {
+        // flex-basis: 48%;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .bookCard {
+        flex-basis: 100%;
     }
 }

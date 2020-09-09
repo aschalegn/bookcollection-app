@@ -1,13 +1,15 @@
 .book_card {
     width: 100%;
-
-    img {
-        // width: 100%;
-    }
+    margin-bottom: 30px;
+    
 }
 
-.add_btn {
-    font-size: 2rem;
-    color: red;
+.addBtn {
+    font-size: 1.3rem;
+    color: #fff;
+    background-color: rgb(36, 206, 36);
     cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 50%;
 }

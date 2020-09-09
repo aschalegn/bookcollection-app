@@ -11,7 +11,7 @@ const App = () => {
     <div className={style.app}>
       <Header />
       <CollctionProvider>
-        <main>
+        <main className={style.wrapper}>
           <Switch>
             <Route
               exact
