@@ -15,7 +15,7 @@ export const collectionReducer = (state, action) => {
       };
       break;
     case "RENAME_COLLECTION":
-      console.log({payload});
+      console.log({ payload });
       state = {
         ...state,
         collection: state.collection.map((col) => {
@@ -60,25 +60,28 @@ export const collectionReducer = (state, action) => {
       };
       break;
     case "MOVE_FROM_COLLECTION_TO_COLLECTION":
+      console.log(payload);
       state = {
         ...state,
         collection: state.collection.map((col) => {
+          
           if (col.id === payload.from) {
             return {
               ...col,
               books: col.books.filter(
-                (book) => book.olid[0] !== payload.olid[0]
+                (book) => book.olid[0] !== payload.book.olid[0]
               ),
             };
-          } else if (col.id === payload.to) {
+          }
+          if (col.id === payload.to) {
             return {
               ...col,
               books: [
                 ...col.books,
                 {
-                  title: payload.title,
-                  author: payload.author,
-                  olid: payload.olid,
+                  title: payload.book.title,
+                  author: payload.book.author,
+                  olid: payload.book.olid,
                 },
               ],
             };

@@ -79,7 +79,6 @@ export const BooksSearch = () => {
           />
         </>
       )}
-      {/* </div> */}
     </section>
   );
 };

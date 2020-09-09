@@ -13,14 +13,34 @@
         }
     }
 
+}
+
+.bookCommands {
+    display: flex;
+    flex-direction: row-reverse;
+
+    >li {
+        margin-right: 10px;
+        list-style-type: none;
+
+        >button {
+            outline: none;
+            border: none;
+        }
+    }
+
     .deleteBtn {
-        position: absolute;
-        background-color: rgb(238, 32, 32);
-        border: none;
-        font-size: 16px;
-        right: 10px;
+        background-color: #da2f2f;
+    }
+
+    .transferBtn {
+        background-color: #436dc9;
+
     }
 }
+
+
+
 
 @media only screen and (max-width:768px) {
     .bookCard {

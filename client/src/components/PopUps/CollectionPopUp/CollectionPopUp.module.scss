@@ -13,42 +13,51 @@
 
 .CollectionPopUp {
     position: fixed;
-    width: 50vw;
+    width: 60vw;
     color: black;
     height: 40vh;
     background-color: #fff;
     border-radius: 7px;
     top: 30%;
-    left: 25%;
+    left: 20%;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
 
-    >button {
-        color: white;
-        width: 100px;
-        height: 40px;
-        margin: 40px 80px;
-        outline: none;
-        border: none;
-        background-color: rgb(67, 67, 128);
-        transition: all .7s;
-        border-radius: 10px;
-        font-size: 20px;
+    // margin-top: 10px;
+    form,
+    div {
+        margin: auto;
+    }
 
-        &:hover {
-            transform: scale(1.1);
+    form {
+
+        select,
+        input,
+        button {
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            margin-left: 10px;
         }
     }
 
-    >button:first-of-type {
-        background-color: red;
+    .createBtn {
+        background-color: rgb(21, 197, 21);
+        border-radius: 50%;
+        font-size: 18px;
     }
+
 }
 
-@media only screen and (max-width: 1050px) {
-    .CollectionPopUp {
-        left: 5vh;
-        width: 90vw;
-    }
+
+
+.closeBtn {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -56,6 +65,7 @@
         width: 96vw;
         left: 2vw;
         font-size: 14px;
+
         >button {
             margin: 40px 20px;
         }

@@ -60,10 +60,10 @@ export default function CollctionProvider(props) {
   };
 
   //* collection to collection
-  const moveFromCollectionToCollection = (from, to, olid) => {
+  const moveFromCollectionToCollection = (from, to, book) => {
     dispatch({
       type: "MOVE_FROM_COLLECTION_TO_COLLECTION",
-      payload: { from, to, olid },
+      payload: { from, to, book },
     });
   };
 
@@ -76,6 +76,7 @@ export default function CollctionProvider(props) {
         deleteCollection,
         addToCollection,
         renameCollection,
+        moveFromCollectionToCollection,
       }}
     >
       {props.children}
