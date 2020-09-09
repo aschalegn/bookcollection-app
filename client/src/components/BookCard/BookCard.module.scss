@@ -8,7 +8,13 @@
         height: 200px;
         max-height: 200px;
     }
-
+    >button{
+        background-color: blue;
+        outline: none;
+        border:none;
+        color: #fff;
+        padding: 5px 10px;
+    }
     margin-bottom: 30px;
 }
 

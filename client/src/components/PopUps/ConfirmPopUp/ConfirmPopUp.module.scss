@@ -3,8 +3,6 @@
     min-width: 100vw;
     height: 100vh;
     content: '';
-    background-color: black;
-    opacity: .4;
     left: 0;
     top: 0;
     padding: 0;
@@ -14,9 +12,9 @@
 .confirmContainer {
     position: fixed;
     width: 50vw;
-    color: black;
+    // color: black;
     height: 40vh;
-    background-color: #fff;
+    background-color: #0a0202;
     border-radius: 7px;
     top: 30%;
     left: 25%;

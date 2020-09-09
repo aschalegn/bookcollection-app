@@ -12,19 +12,35 @@ export const Collections = () => {
     <section>
       <div className={style.collectionHeader}>
         <h1 className={style.pageTitle}>Books Collections</h1>
-        <button className={style.createBtn} onClick={() => setCreateBtn(!createBtn)}>
+        <button
+          className={style.createBtn}
+          onClick={() => setCreateBtn(!createBtn)}
+        >
           Add New <span>&#10010;</span>
         </button>
       </div>
-      {createBtn ? <CollectionPopUp setCreateBtn={setCreateBtn} createBtn={createBtn}/> : ""}
+      {createBtn ? (
+        <CollectionPopUp setCreateBtn={setCreateBtn} createBtn={createBtn} />
+      ) : (
+        ""
+      )}
       {collections.collection.length > 0 ? (
         <article className={style.container}>
           {collections.collection.map((col, i) => (
-            <CollectionContainer collection={col} key={i}/>
+            <CollectionContainer collection={col} key={i} />
           ))}
         </article>
       ) : (
-        ""
+        <section className={style}>
+          No Collection was created{" "}
+          <p
+            onClick={() => {
+              setCreateBtn(true);
+            }}
+          >
+            create
+          </p>
+        </section>
       )}
     </section>
   );

@@ -91,7 +91,7 @@ export default function CollectionPopUp(props) {
           ) : (
             <p>No collections</p>
           )}
-          <span
+          <span className={style.openCreate}
             onClick={() => {
               setCreateBtn(!createBtn);
             }}

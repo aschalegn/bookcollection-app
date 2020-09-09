@@ -25,9 +25,10 @@ export default function BookCard(props) {
               <small> {author}</small>
             </h3>
           ))
-        : ""}
+        : "No author Found"
+        }
       <button onClick={() => setAddBtn(!addBtn)}>
-        <span>Add To Col</span>
+        <span>Add To Colllection</span>
       </button>
       <br />
 
