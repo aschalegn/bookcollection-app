@@ -1,7 +1,15 @@
-.book_card {
+.bookCard {
     width: 100%;
     margin-bottom: 30px;
-    
+    height: 350px;
+    max-height: 350px;
+
+    img {
+        height: 200px;
+        max-height: 200px;
+    }
+
+    margin-bottom: 30px;
 }
 
 .addBtn {

@@ -38,8 +38,10 @@ export default function CollctionProvider(props) {
     collectionId,
     title,
     author = "No author found",
-    olid
+    olid,
+    cover
   ) => {
+    console.log(cover);
     dispatch({
       type: "ADD_TO_COLLECTION",
       payload: {
@@ -47,6 +49,7 @@ export default function CollctionProvider(props) {
         title,
         author,
         olid,
+        cover
       },
     });
   };

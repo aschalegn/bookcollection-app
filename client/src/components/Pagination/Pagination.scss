@@ -1,0 +1,36 @@
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+
+    .page {
+        list-style-type: none;
+        padding: 5px;
+        margin: 2px;
+        border: 1px solid;
+        border-radius: 5px;
+        background-color: #131392;
+        transition: all .7s;
+        border: none;
+        cursor: pointer;
+
+
+        &:hover {
+            background-color: #1f42dd;
+        }
+    }
+
+
+
+    .pageBtn {
+        font-size: 1.3rem;
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+        transition: all .5s;
+    }
+
+    .active {
+        color: rgb(221, 56, 44);
+        font-size: 30px;
+    }
+}

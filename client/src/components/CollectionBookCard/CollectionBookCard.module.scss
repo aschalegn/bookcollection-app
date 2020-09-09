@@ -7,6 +7,8 @@
 
     .coverImg {
         transition: all .5s;
+        height: 200px;
+        max-height: 200px;
 
         &:hover {
             transform: scale(1.07);

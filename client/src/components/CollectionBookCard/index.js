@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { getBookCoverByOLID } from "../../BooksApi";
+import { getBookCoverByOLID, noCoverAvaillable } from "../../BooksApi";
 import * as style from "./CollectionBookCard.module.scss";
 import { CollectionContext } from "../../context/Collections";
 import ConfirmPopUp from "../PopUps/ConfirmPopUp";
@@ -60,7 +60,7 @@ export default function CollectionBookCard(props) {
       <h4>{book.author}</h4>
       <img
         className={style.coverImg}
-        src={getBookCoverByOLID(book.olid)}
+        src={book.cover ? getBookCoverByOLID(book.cover) : noCoverAvaillable}
         alt={book.title}
       />
     </div>

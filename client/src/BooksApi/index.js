@@ -7,6 +7,9 @@ export const getBookCoverByOLID = (olid) =>
 const getBookInfoBuOLID = (olid) =>
   `http://openlibrary.org/api/books?bibkeys=OLID:${olid}&jscmd=data`;
 
+export const noCoverAvaillable =
+  "https://cdn.shoplightspeed.com/shops/608154/files/22146758/image.jpg";
+
 export const searchBooks = (searchMethod = "q", searchTerm = "") => {
   return fetch(getApiSearchUrl(searchMethod, searchTerm)).then((r) => r.json());
 };

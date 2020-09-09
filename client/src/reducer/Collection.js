@@ -37,6 +37,7 @@ export const collectionReducer = (state, action) => {
                   title: payload.title,
                   author: payload.author,
                   olid: payload.olid,
+                  cover: payload.cover,
                 },
               ],
             };
@@ -64,7 +65,6 @@ export const collectionReducer = (state, action) => {
       state = {
         ...state,
         collection: state.collection.map((col) => {
-          
           if (col.id === payload.from) {
             return {
               ...col,

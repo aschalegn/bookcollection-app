@@ -31,6 +31,12 @@ const App = () => {
                 <BooksSearch {...props} />
               )}
             />
+            <Route
+              path="/:page"
+              render={(props) => (
+                <BooksSearch {...props} />
+              )}
+            />
           </Switch>
         </main>
       </CollctionProvider>

@@ -1,5 +1,6 @@
 import React from "react";
-import * as style from "./Pagination.module.scss";
+import { NavLink } from "react-router-dom";
+import "./Pagination.scss";
 
 export default function Pagination(props) {
   const { perPage, totalPages, paginate } = props;
@@ -9,12 +10,17 @@ export default function Pagination(props) {
   }
 
   return (
-    <ul className={style.pagination_container}>
+    <ul className="paginationContainer">
       {pageNumbers.map((num) => (
-        <li key={num} className={style.page}>
-          <a onClick={() => paginate(num)} className={style.page_btn}>
+        <li key={num} className="page">
+          <NavLink
+            to={"/" + num}
+            onClick={() => paginate(num)}
+            className="pageBtn"
+            activeClassName="active"
+          >
             {num}
-          </a>
+          </NavLink>
         </li>
       ))}
     </ul>

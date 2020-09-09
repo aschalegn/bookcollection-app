@@ -12,14 +12,16 @@ const CollectionForm = (props) => {
   } = useContext(CollectionContext);
 
   const addOrTransfer = () => {
+    console.log(book.cover_edition_key);
     if (from) moveFromCollectionToCollection(from, collectionId, book);
-    // else
-    //   addToCollection(
-    //     collectionId,
-    //     book.title,
-    //     book.author_name,
-    //     book.edition_key
-    //   );
+    else
+      addToCollection(
+        collectionId,
+        book.title,
+        book.author_name,
+        book.edition_key,
+        book.cover_edition_key
+      );
   };
 
   return (

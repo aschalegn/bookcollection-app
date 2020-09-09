@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import * as style from "./BookCard.module.scss";
-import { getBookCoverByOLID } from "../../BooksApi";
+import { getBookCoverByOLID,noCoverAvaillable } from "../../BooksApi";
 import CollectionPopUp from "../PopUps/CollectionPopUp";
 
 export default function BookCard(props) {
   const { book } = props;
   const [createBtn, setCreateBtn] = useState(false);
   const [addBtn, setAddBtn] = useState(false);
-
+  
   return (
-    <div className={style.book_card}>
+    <div className={style.bookCard}>
       <h3>{book.title}</h3>
       <img
-        src={getBookCoverByOLID(book.edition_key[1] || book.edition_key[0])}
+        src={
+          book.cover_edition_key
+            ? getBookCoverByOLID(book.cover_edition_key)
+            : noCoverAvaillable
+        }
         alt={book.title}
       />
       {book.author_name
