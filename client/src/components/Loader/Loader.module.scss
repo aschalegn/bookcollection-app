@@ -1,0 +1,48 @@
+.LoaderContainer {
+    display: flex;
+
+    >li {
+        list-style-type: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        animation: floating 2s ease-in-out infinite;
+        position: relative;
+
+    }
+
+    >li:nth-child(1) {
+        background-color: red;
+        left: -200px;
+        animation-delay: .37s;
+    }
+
+    >li:nth-child(2) {
+        background-color: yellow;
+        left: -160px;
+        animation-delay: .32s;
+    }
+
+    >li:nth-child(3) {
+        background-color: blue;
+        left: -120px;
+        animation-delay: .27s;
+    }
+
+    >li:nth-child(4) {
+        background-color: green;
+        left: -20px;
+        animation-delay: .22s;
+    }
+}
+
+@keyframes floating {
+    50% {
+        left: 40%;
+        padding-left: -10px
+    }
+
+    100% {
+        left: 98%;
+    }
+}

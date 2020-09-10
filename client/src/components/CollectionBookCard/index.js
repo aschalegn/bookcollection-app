@@ -4,12 +4,14 @@ import * as style from "./CollectionBookCard.module.scss";
 import { CollectionContext } from "../../context/Collections";
 import ConfirmPopUp from "../PopUps/ConfirmPopUp";
 import CollectionPopUp from "../PopUps/CollectionPopUp";
+import BookInfoPopUp from "../PopUps/bookInfo";
 
 export default function CollectionBookCard(props) {
   const { book, collectionId } = props;
   const { removeFromCollection } = useContext(CollectionContext);
   const [toDelete, setToDelete] = useState(false);
   const [transformBtn, setTransformBtn] = useState(false);
+  const [getInfo, setGetInfo] = useState(false);
 
   const confirm = (response) => {
     if (response) removeFromCollection(collectionId, book.olid);
@@ -56,13 +58,15 @@ export default function CollectionBookCard(props) {
       ) : (
         ""
       )}
+      <div onClick={()=>setGetInfo(!getInfo)}>
       <h3>{book.title}</h3>
       <h4>{book.author}</h4>
       <img
         className={style.coverImg}
         src={book.cover ? getBookCoverByOLID(book.cover) : noCoverAvaillable}
         alt={book.title}
-      />
+      /></div>
+      {getInfo? <BookInfoPopUp olid={book.olid}/>: ''}
     </div>
   );
 }

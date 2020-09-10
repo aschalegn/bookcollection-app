@@ -4,18 +4,28 @@
     height: 350px;
     max-height: 350px;
 
-    img {
-        height: 200px;
-        max-height: 200px;
+    .bookInfo {
+        >h3 {
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        >img {
+            height: 200px;
+            max-height: 200px;
+        }
+
     }
-    >button{
+
+    >button {
         background-color: blue;
         outline: none;
-        border:none;
+        border: none;
         color: #fff;
         padding: 5px 10px;
     }
-    margin-bottom: 30px;
 }
 
 .addBtn {

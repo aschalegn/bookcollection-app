@@ -3,10 +3,12 @@ import { searchBooks } from "../../BooksApi";
 import * as style from "./BooksSearch.module.scss";
 import BookCard from "../../components/BookCard";
 import Pagination from "../../components/Pagination";
+import Loader from "../../components/Loader";
 
 export const BooksSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
   const [searchMethod, setSearchMethod] = useState("q");
   const [searchResult, setSearchResult] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,6 +18,7 @@ export const BooksSearch = () => {
   const getSearchResult = (e) => {
     e.preventDefault();
     setLoading(true);
+    setSearched(true);
     searchBooks(searchMethod, searchTerm).then((result) => {
       setSearchResult(result.docs);
       setTotalPages(result.docs.length);
@@ -63,8 +66,8 @@ export const BooksSearch = () => {
       </form>
 
       {loading ? (
-        <p>Loding...</p>
-      ) : (
+        <Loader />
+      ) : currentResult.length > 0 ? (
         <>
           <article className={style.searchResult}>
             {currentResult.map((book, i) => (
@@ -78,6 +81,8 @@ export const BooksSearch = () => {
             totalPages={totalPages}
           />
         </>
+      ) : (
+        ""
       )}
     </section>
   );

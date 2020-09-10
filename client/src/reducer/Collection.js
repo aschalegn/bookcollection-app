@@ -61,7 +61,6 @@ export const collectionReducer = (state, action) => {
       };
       break;
     case "MOVE_FROM_COLLECTION_TO_COLLECTION":
-      console.log(payload);
       state = {
         ...state,
         collection: state.collection.map((col) => {
@@ -82,6 +81,7 @@ export const collectionReducer = (state, action) => {
                   title: payload.book.title,
                   author: payload.book.author,
                   olid: payload.book.olid,
+                  cover: payload.book.cover,
                 },
               ],
             };

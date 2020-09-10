@@ -12,9 +12,9 @@ const CollectionForm = (props) => {
   } = useContext(CollectionContext);
 
   const addOrTransfer = () => {
-    console.log(book.cover_edition_key);
-    if (from) moveFromCollectionToCollection(from, collectionId, book);
-    else
+    if (from && from !== collectionId)
+      moveFromCollectionToCollection(from, collectionId, book);
+    else if(!from)
       addToCollection(
         collectionId,
         book.title,
@@ -91,7 +91,8 @@ export default function CollectionPopUp(props) {
           ) : (
             <p>No collections</p>
           )}
-          <span className={style.openCreate}
+          <span
+            className={style.openCreate}
             onClick={() => {
               setCreateBtn(!createBtn);
             }}

@@ -10,17 +10,11 @@ export default function CollectionContainer({ collection }) {
   const prev = () => {
     const slider = sliderRef.current;
     slider.scrollLeft -= slider.offsetWidth;
-    if (slider.scrollLeft < 0) {
-      slider.scrollLeft = slider.scrollWidth;
-    }
   };
 
   const next = () => {
     const slider = sliderRef.current;
     slider.scrollLeft += slider.offsetWidth;
-    if (slider.scrollLeft > slider.scrollWidth - slider.offsetWidth) {
-      slider.scrollLeft = 0;
-    }
   };
 
   return (
