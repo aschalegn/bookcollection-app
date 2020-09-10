@@ -2,12 +2,12 @@
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 24%;
-    margin: 10px 1%;
+    margin: 0 1%;
     overflow: hidden;
     height: 350px;
     max-height: 350px;
-    // position: relative;
-    >h3 {
+    
+    h3 {
         width: 100%;
         text-overflow: ellipsis;
         white-space: nowrap;

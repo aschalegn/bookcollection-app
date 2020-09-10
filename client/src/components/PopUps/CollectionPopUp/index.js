@@ -14,7 +14,7 @@ const CollectionForm = (props) => {
   const addOrTransfer = () => {
     if (from && from !== collectionId)
       moveFromCollectionToCollection(from, collectionId, book);
-    else if(!from)
+    else if (!from)
       addToCollection(
         collectionId,
         book.title,
@@ -129,7 +129,14 @@ export default function CollectionPopUp(props) {
       )}
 
       {/*Transform From collection to collection */}
-      {transformBtn ? <CollectionForm from={from} book={book} /> : ""}
+      {transformBtn ? (
+        <>
+          <h3>Transfer To</h3>
+          <CollectionForm from={from} book={book} />{" "}
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
