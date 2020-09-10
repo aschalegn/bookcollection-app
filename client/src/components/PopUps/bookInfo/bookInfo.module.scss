@@ -1,0 +1,60 @@
+.bookInfo::before {
+    position: fixed;
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.bookInfo {
+    position: fixed;
+    width: 80vw;
+    color: #ffffff;
+    min-height: 40vh;
+    background-color: #0a0202;
+    border-radius: 7px;
+    top: 25%;
+    left: 10%;
+    z-index: 100;
+    display: flex;
+
+    div {
+        margin-left: 20px;
+
+        >h3 {}
+    }
+
+    >span {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #e72626;
+        font-size: 18px;
+    }
+
+    >img {
+        width: 200px;
+    }
+
+
+
+    li {
+        list-style-type: none;
+    }
+
+}
+
+@media only screen and (max-width:768px) {
+    .bookInfo {
+        flex-direction: column;
+        align-items: center;
+        min-height: 70h;
+        top: 15%;
+    }
+
+    img {
+        margin-top: 10px;
+    }
+}

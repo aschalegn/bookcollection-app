@@ -34,7 +34,7 @@ export default function BookCard(props) {
           </h3>
         )}
       </div>
-      {getInfo ? <BookInfoPopUp olid={book.edition_key} /> : ""}
+      {getInfo ? <BookInfoPopUp book={book} setGetInfo={setGetInfo} /> : ""}
       <button onClick={() => setAddBtn(!addBtn)}>
         <span>Add To Colllection</span>
       </button>

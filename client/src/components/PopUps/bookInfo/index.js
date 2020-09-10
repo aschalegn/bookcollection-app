@@ -1,20 +1,41 @@
-import React, { useEffect } from "react";
-import { getBookInfo } from "../../../BooksApi";
+import React from "react";
+import * as style from "./bookInfo.module.scss";
 
-export default function BookInfoPopUp({ olid }) {
-  const getInfo = () => {
-    getBookInfo(olid).then((res) => {
-      console.log(res);
-    //   JSON.parse(res)
-    });
-  };
-  useEffect(() => {
-    getInfo();
-  }, []);
+import { getBookCoverByOLID, noCoverAvaillable } from "../../../BooksApi";
 
+export default function BookInfoPopUp({ book, setGetInfo }) {
   return (
-    <div>
-      <h1>Book info pop up</h1>
+    <div className={style.bookInfo}>
+      <span onClick={() => setGetInfo(false)} className={style.closeBtn}>
+        &#10006;
+      </span>
+      <img
+        src={
+          book.cover_edition_key
+            ? getBookCoverByOLID(book.cover_edition_key)
+            : noCoverAvaillable
+        }
+        alt={book.title}
+      />
+      <div>
+        <h3>{book.title}</h3>
+        {book.author_name ? (
+          book.author_name.map((author, i) => (
+            <h3 key={i}>
+              <small> {author}</small>
+            </h3>
+          ))
+        ) : (
+          <h3>
+            <small> No author Found</small>
+          </h3>
+        )}
+        <p>publish Year: {book.publish_year ? book.publish_year[0] : ""}</p>
+        <p>Availeable in languages: </p>
+        <ul>
+          {book.language ? book.language.map((lang) => <li>{lang}</li>) : ""}
+        </ul>
+      </div>
     </div>
   );
 }

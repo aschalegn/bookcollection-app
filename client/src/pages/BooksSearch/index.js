@@ -81,6 +81,8 @@ export const BooksSearch = () => {
             totalPages={totalPages}
           />
         </>
+      ) : searched ? (
+        <p>No result Found Try ather term or change the filter</p>
       ) : (
         ""
       )}

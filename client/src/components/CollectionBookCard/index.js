@@ -4,7 +4,6 @@ import * as style from "./CollectionBookCard.module.scss";
 import { CollectionContext } from "../../context/Collections";
 import ConfirmPopUp from "../PopUps/ConfirmPopUp";
 import CollectionPopUp from "../PopUps/CollectionPopUp";
-import BookInfoPopUp from "../PopUps/bookInfo";
 
 export default function CollectionBookCard(props) {
   const { book, collectionId } = props;
@@ -66,7 +65,6 @@ export default function CollectionBookCard(props) {
         src={book.cover ? getBookCoverByOLID(book.cover) : noCoverAvaillable}
         alt={book.title}
       /></div>
-      {getInfo? <BookInfoPopUp olid={book.olid}/>: ''}
-    </div>
+         </div>
   );
 }

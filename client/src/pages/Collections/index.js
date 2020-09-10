@@ -32,13 +32,9 @@ export const Collections = () => {
         </article>
       ) : (
         <section className={style}>
-          No Collection was created{" "}
-          <p
-            onClick={() => {
-              setCreateBtn(true);
-            }}
-          >
-            create
+          <p className={style.noCollection}>
+            No Collection was created please create new with the green button on
+            the top of the page
           </p>
         </section>
       )}

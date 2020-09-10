@@ -25,3 +25,16 @@
     margin-left: 5%;
     position: absolute;
 }
+
+.noCollection {
+    width: 90%;
+    margin: 30vh auto;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 650px) {
+    .createBtn {
+        position: static;
+    }
+}
