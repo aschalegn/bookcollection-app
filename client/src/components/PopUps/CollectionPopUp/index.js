@@ -22,6 +22,8 @@ const CollectionForm = (props) => {
         book.edition_key,
         book.cover_edition_key
       );
+
+
   };
 
   return (
@@ -64,7 +66,7 @@ export default function CollectionPopUp(props) {
     book,
     from,
   } = props;
-
+  const [isAddedMsg, setIsAddedMsg] = useState("")
   const { collections, createCollection } = useContext(CollectionContext);
 
   const [collectionName, setCollectionName] = useState("");
@@ -76,8 +78,8 @@ export default function CollectionPopUp(props) {
           createBtn
             ? setCreateBtn(false)
             : addBtn
-            ? setAddBtn(false)
-            : setTransformBtn(false);
+              ? setAddBtn(false)
+              : setTransformBtn(false);
         }}
         className={style.closeBtn}
       >
@@ -89,8 +91,8 @@ export default function CollectionPopUp(props) {
           {collections.collection.length > 0 ? (
             <CollectionForm book={book} />
           ) : (
-            <p>No collections</p>
-          )}
+              <p>No collections</p>
+            )}
           <span
             className={style.openCreate}
             onClick={() => {
@@ -101,8 +103,8 @@ export default function CollectionPopUp(props) {
           </span>
         </div>
       ) : (
-        ""
-      )}
+          ""
+        )}
       {/* user wants to create a new collection */}
       {createBtn ? (
         <>
@@ -110,23 +112,30 @@ export default function CollectionPopUp(props) {
             onSubmit={(e) => {
               e.preventDefault();
               if (collectionName.replace(/\s+/, "")) {
-                createCollection(collectionName);
+                const isAdded = createCollection(collectionName);
+                if (isAdded) {
+                  setCreateBtn(false);
+                }
+                else {
+                  setIsAddedMsg("A collection with same name alrady exists");
+                }
                 setCollectionName("");
               }
             }}
           >
+            <p>{isAddedMsg}</p>
             <input
               type="text"
               name="collectionName"
               onChange={(e) => setCollectionName(e.target.value)}
               placeholder="Enter collection name"
             />
-            <button onClick={() => {}}>Create</button>
+            <button onClick={() => { }}>Create</button>
           </form>
         </>
       ) : (
-        ""
-      )}
+          ""
+        )}
 
       {/*Transform From collection to collection */}
       {transformBtn ? (
@@ -135,8 +144,8 @@ export default function CollectionPopUp(props) {
           <CollectionForm from={from} book={book} />{" "}
         </>
       ) : (
-        ""
-      )}
+          ""
+        )}
     </div>
   );
 }

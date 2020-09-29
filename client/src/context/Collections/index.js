@@ -13,10 +13,18 @@ export default function CollctionProvider(props) {
 
   //Create Collection
   const createCollection = (collectionName) => {
-    dispatch({
-      type: "CREATE_COLLECTION",
-      payload: { name: collectionName, books: [], id: uuidv4() },
+    const isExists = collections.collection.find(collection => {
+      return collection.name === collectionName;
     });
+    
+    if (!isExists) {
+      dispatch({
+        type: "CREATE_COLLECTION",
+        payload: { name: collectionName, books: [], id: uuidv4() },
+      });
+      return true
+    }
+    return false
   };
 
   const renameCollection = (collectionId, newName) => {
