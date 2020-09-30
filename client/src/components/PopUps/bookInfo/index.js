@@ -33,7 +33,7 @@ export default function BookInfoPopUp({ book, setGetInfo }) {
         <p>publish Year: {book.publish_year ? book.publish_year[0] : ""}</p>
         <p>Availeable in languages: </p>
         <ul>
-          {book.language ? book.language.map((lang) => <li>{lang}</li>) : ""}
+          {book.language ? book.language.map((lang,i) => <li key={i}>{lang}</li>) : ""}
         </ul>
       </div>
     </div>

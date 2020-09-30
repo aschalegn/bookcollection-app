@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./Pagination.scss";
 
 export default function Pagination(props) {
-  const { perPage, totalPages, paginate } = props;
+  const { perPage, totalBooks, paginate } = props;
   const pageNumbers = [];
-  for (let i = 0; i < Math.ceil(totalPages / perPage); i++) {
+  for (let i = 0; i < Math.ceil(totalBooks / perPage); i++) {
     pageNumbers.push(i + 1);
   }
 
