@@ -56,7 +56,7 @@ export const BooksSearch = () => {
                     </select>
                     <input
                         type="text"
-                        name="serach"
+                        name="search"
                         id="search"
                         className={style.formItem}
                         onChange={(e) => {
