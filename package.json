@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm install -g yarn && yarn install && yarn run start"
   },
   "jest": {
     "preset": "jest-puppeteer"
