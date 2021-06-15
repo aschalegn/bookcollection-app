@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install && cd client && yarn install && yarn build"
+    "heroku-postbuild": "npm install && cd client && npm install yarn -g && yarn install && yarn build"
   },
   "repository": {
     "type": "git",
