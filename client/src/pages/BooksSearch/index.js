@@ -31,7 +31,6 @@ export const BooksSearch = () => {
         setCurrentPage(currentPage);
     };
 
-
     const lastIndex = currentPage * perPage;
     const firstIndex = lastIndex - perPage;
     const currentResult = filteredResult.slice(firstIndex, lastIndex);
